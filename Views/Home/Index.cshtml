@@ -1,0 +1,312 @@
+﻿<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+@{
+
+    ViewBag.Title = "Calculator";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <style>
+        button {
+            height: 40px;
+            width: 50px;
+        }
+    </style>
+</head>
+<body style="background-color:oldlace">
+    <div>
+        <div style="align-content:center; float:right">
+            <button style="width: 150px" id="logout" type="button" class="btn btn-light btn-lg" onclick="logout(event)">Logout</button>
+        </div>
+        <table style="border:thick; margin:auto; display:table">
+            <tr>
+                <td colspan="5">
+                    <center>
+                        <h2>Web Calculator</h2>
+                    </center>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="5">
+                    <label for="textArea"></label>
+                    <input class="form-control" id="textArea" type="text" style="text-align:right; text-decoration:solid">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button id="ss" type="button" class="btn btn-light btn-lg"></button>
+                </td>
+                <td>
+                    <button id="ss" type="button" class="btn btn-light btn-lg"></button>
+                </td>
+                <td>
+                    <button id="ss" type="button" class="btn btn-light btn-lg"></button>
+                </td>
+                <td>
+                    <button id="nB" type="button" class="btn btn-light btn-lg">B</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button id="n1" type="button" class="btn btn-light btn-lg">1</button>
+                </td>
+                <td>
+                    <button id="n2" type="button" class="btn btn-light btn-lg">2</button>
+                </td>
+                <td>
+                    <button id="n3" type="button" class="btn btn-light btn-lg">3</button>
+                </td>
+
+                <td>
+                    <button id="nx" type="button" class="btn btn-light btn-lg" onclick="multiply(event)">*</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button id="n4" type="button" class="btn btn-light btn-lg">4</button>
+                </td>
+                <td>
+                    <button id="n5" type="button" class="btn btn-light btn-lg">5</button>
+                </td>
+                <td>
+                    <button id="n6" type="button" class="btn btn-light btn-lg">6</button>
+                </td>
+                <td>
+                    <button id="n-" type="button" class="btn btn-light btn-lg" onclick="subtract(event)">-</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button id="n7" type="button" class="btn btn-light btn-lg">7</button>
+                </td>
+                <td>
+                    <button id="n8" type="button" class="btn btn-light btn-lg">8</button>
+                </td>
+                <td>
+                    <button id="n9" type="button" class="btn btn-light btn-lg">9</button>
+                </td>
+                <td>
+                    <button id="n+" type="button" class="btn btn-light btn-lg" onclick="sum(event)">+</button>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <button id="nC" type="button" class="btn btn-light btn-lg">C</button>
+                </td>
+                <td>
+                    <button id="n0" type="button" class="btn btn-light btn-lg">0</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-light btn-lg" onclick="divide(event)">/</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-light btn-lg" onclick="calculate(event)">=</button>
+                </td>
+
+            </tr>
+        </table>
+    </div>
+
+    <script>
+        $("#textArea").val("0");
+
+        //click events
+        document.getElementById('n0').onclick = function (e) {
+            var currentText = document.getElementById("textArea").value;
+            if (currentText == "0") {
+                $("#textArea").val("0");
+            }
+            else {
+                $("#textArea").val(currentText + "0");
+            }
+        }
+        document.getElementById('n1').onclick = function (e) {
+            var currentText = document.getElementById("textArea").value;
+            if (currentText == "0") {
+                $("#textArea").val("1");
+            }
+            else {
+                $("#textArea").val(currentText + "1");
+            }
+        }
+        document.getElementById('n2').onclick = function (e) {
+            var currentText = document.getElementById("textArea").value;
+            if (currentText == "0") {
+                $("#textArea").val("2");
+            }
+            else {
+                $("#textArea").val(currentText + "2");
+            }
+        }
+        document.getElementById('n3').onclick = function (e) {
+            var currentText = document.getElementById("textArea").value;
+            if (currentText == "0") {
+                $("#textArea").val("3");
+            }
+            else {
+                $("#textArea").val(currentText + "3");
+            }
+        }
+        document.getElementById('n4').onclick = function (e) {
+            var currentText = document.getElementById("textArea").value;
+            if (currentText == "0") {
+                $("#textArea").val("4");
+            }
+            else {
+                $("#textArea").val(currentText + "4");
+            }
+        }
+        document.getElementById('n5').onclick = function (e) {
+            var currentText = document.getElementById("textArea").value;
+            if (currentText == "0") {
+                $("#textArea").val("5");
+            }
+            else {
+                $("#textArea").val(currentText + "5");
+            }
+        }
+        document.getElementById('n6').onclick = function (e) {
+            var currentText = document.getElementById("textArea").value;
+            if (currentText == "0") {
+                $("#textArea").val("6");
+            }
+            else {
+                $("#textArea").val(currentText + "6");
+            }
+        }
+        document.getElementById('n7').onclick = function (e) {
+            var currentText = document.getElementById("textArea").value;
+            if (currentText == "0") {
+                $("#textArea").val("7");
+            }
+            else {
+                $("#textArea").val(currentText + "7");
+            }
+        }
+        document.getElementById('n8').onclick = function (e) {
+            var currentText = document.getElementById("textArea").value;
+            if (currentText == "0") {
+                $("#textArea").val("8");
+            }
+            else {
+                $("#textArea").val(currentText + "8");
+            }
+        }
+        document.getElementById('n9').onclick = function (e) {
+            var currentText = document.getElementById("textArea").value;
+            if (currentText == "0") {
+                $("#textArea").val("9");
+            }
+            else {
+                $("#textArea").val(currentText + "9");
+            }
+        }
+        document.getElementById('nC').onclick = function (e) {
+            $("#textArea").val("0");
+        }
+        document.getElementById('nB').onclick = function (e) {
+            var currentText = document.getElementById("textArea").value;
+            $("#textArea").val(currentText.substring(0, currentText.length - 1))
+        }
+        function sum(event) {
+            var currentText = document.getElementById("textArea").value;
+            //get last character
+            var lastChar = currentText.slice(-1);
+            if (lastChar == "+" || lastChar == "-" || lastChar == "/" || lastChar == "*") {
+                //do nothing
+            }
+            else {
+                calculate(currentText, "+");
+                $("#textArea").val(currentText + "+");
+            }
+        }
+        function subtract(event) {
+            var currentText = document.getElementById("textArea").value;
+            //get last character
+            var lastChar = currentText.slice(-1);
+            if (lastChar == "+" || lastChar == "-" || lastChar == "/" || lastChar == "*") {
+                //do nothing
+            }
+            else {
+                calculate(currentText, "-");
+                $("#textArea").val(currentText + "-");
+            }
+        }
+        function multiply(event) {
+            var currentText = document.getElementById("textArea").value;
+            //get last character
+            var lastChar = currentText.slice(-1);
+            if (lastChar == "+" || lastChar == "-" || lastChar == "/" || lastChar == "*") {
+                //do nothing
+            }
+            else {
+                calculate(currentText, "*");
+                $("#textArea").val(currentText + "*");
+            }
+        }
+        function divide(event) {
+            var currentText = document.getElementById("textArea").value;
+            //get last character
+            var lastChar = currentText.slice(-1);
+            if (lastChar == "+" || lastChar == "-" || lastChar == "/" || lastChar == "*") {
+                //do nothing
+            }
+            else {
+                calculate(currentText, "/");
+                $("#textArea").val(currentText + "/");
+            }
+        }
+
+        //logout
+        function logout(event) {
+            var serviceURL = '/Home/Logout';
+            $.ajax({
+                type: "POST",
+                url: serviceURL,
+                data: {},
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    window.location.href = data;
+                    alert("Successfully logged out");
+                },
+                error: function (textStatus, errorThrown) {
+                    console.log(textStatus.responseText);
+                }
+            });
+        }
+
+        //calculation method
+        function calculate(event, nextOperator) {
+
+            var currentTextArea = document.getElementById("textArea").value;
+            // var operatorType = event.target.textContent;
+
+            var serviceURL = '/Home/Calculate';
+
+            $.ajax({
+                type: "GET",
+                url: serviceURL,
+                data: {
+                    'textArea': currentTextArea,
+                    'nextOperator': nextOperator
+                },
+                contentType: "application/json; charset=utf-8",
+                success: function (data) {
+                    $("#textArea").val(data);
+                },
+                error: function (textStatus, errorThrown) {
+                    console.log(textStatus.responseText);
+                }
+            });
+
+
+        }
+    </script>
+</body>
+</html>
